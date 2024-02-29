@@ -2,15 +2,12 @@ const Header = (props) => <h1>{props.course}</h1>;
 
 const Content = (props) =>
   <>
-    {
-      props.parts.map((part, i) => (
-          <p key={i}>
-            {part} {props.exercises[i]}
-          </p>
-        )
-      )
-    }
+    <Part part={props.parts[0]} exercises={props.exercises[0]} />
+    <Part part={props.parts[1]} exercises={props.exercises[1]} />
+    <Part part={props.parts[2]} exercises={props.exercises[2]} />
   </>
+
+const Part = (props) => <p>{props.part} {props.exercises}</p>
 
 const Total = (props) => {
   const total = props.exercises.reduce((sum, val) => sum + val);
