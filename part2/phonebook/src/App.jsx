@@ -45,14 +45,14 @@ const App = () => {
   }
 
   const deletePerson = (id) => {
+    console.log({id});
     if (window.confirm(`Delete ${persons.find(p => p.id === id).name} ?`)) {
       personService
         .delete_(id)
-        .then(returnedPerson => {
-          console.log(returnedPerson);
+        .then(response => {
+          console.log(response);
           setPersons(persons.filter(p => p.id !== id))
         })
-        .catch(console.log)
     }
   }
 
