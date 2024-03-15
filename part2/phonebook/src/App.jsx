@@ -18,10 +18,6 @@ const App = () => {
       })
   }, [])
 
-  // const handle = (event) => {
-  //   setNewName(event.target.value)
-  // }
-
   const addPerson = (event) => {
     event.preventDefault();
 
@@ -56,15 +52,14 @@ const App = () => {
     }
   }
 
-  const handleFilterChange = (e) => {
-    setFilter(e.target.value)
-  }
-
   return (
     <div>
       <h2>Phonebook</h2>
 
-      <Filter filter={filter} onChange={handleFilterChange} />
+      <Filter
+        filter={filter}
+        onChange={(e) => { setFilter(e.target.value) }}
+      />
 
       <h3>add a new</h3>
 
