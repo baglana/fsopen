@@ -18,9 +18,9 @@ const App = () => {
       })
   }, [])
 
-  const handle = (event) => {
-    setNewName(event.target.value)
-  }
+  // const handle = (event) => {
+  //   setNewName(event.target.value)
+  // }
 
   const addPerson = (event) => {
     event.preventDefault();
@@ -42,6 +42,18 @@ const App = () => {
         setNewName('')
         setNewNumber('')
       })
+  }
+
+  const deletePerson = (id) => {
+    if (window.confirm(`Delete ${persons.find(p => p.id === id).name} ?`)) {
+      personService
+        .delete_(id)
+        .then(returnedPerson => {
+          console.log(returnedPerson);
+          setPersons(persons.filter(p => p.id !== id))
+        })
+        .catch(console.log)
+    }
   }
 
   const handleFilterChange = (e) => {
@@ -66,7 +78,11 @@ const App = () => {
 
       <h3>Numbers</h3>
 
-      <Persons persons={persons} filter={filter} />
+      <Persons
+        persons={persons}
+        filter={filter}
+        deletePerson={deletePerson}
+      />
     </div>
   )
 }

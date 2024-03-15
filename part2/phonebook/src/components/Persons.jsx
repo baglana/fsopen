@@ -1,6 +1,6 @@
 import Person from './Person'
 
-const Persons = ({ persons, filter }) => (
+const Persons = ({ persons, filter, deletePerson }) => (
   <>
     {persons
       .filter(p =>
@@ -11,6 +11,7 @@ const Persons = ({ persons, filter }) => (
           key={p.name}
           name={p.name}
           number={p.number}
+          deletePerson={() => deletePerson(p.id)}
         />
       )}
   </>
