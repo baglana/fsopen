@@ -6,6 +6,7 @@ import Display from "./components/Display";
 function App() {
   const [value, setValue] = useState("");
   const [countries, setCountries] = useState([]);
+  const [country, setCountry] = useState(null);
 
   useEffect(() => {
     console.log("effect run, value is now", value);
@@ -38,7 +39,7 @@ function App() {
     <>
       <Filter value={value} onChange={handleChange} />
 
-      <Display countries={countries} />
+      <Display countries={countries} country={country} setCountry={setCountry} />
     </>
   );
 }
